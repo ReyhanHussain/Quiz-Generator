@@ -6,7 +6,10 @@ import QuizHeader from './components/QuizHeader'
 import MainPage from './quizpage/MainPage'
 function App() {
   return (
-  <MainPage/>
+  // <MainPage/>
+  // <Loader/
+  <Hero/>
+  // <Settings/>
   )
 }
 
