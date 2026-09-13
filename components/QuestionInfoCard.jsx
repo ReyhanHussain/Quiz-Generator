@@ -6,7 +6,7 @@ function QuestionInfoCard({ questionNo, checked = 'false' }) {
     <div className="innerQuestionCOntainer">
       <span>{questionNo}</span>
       {
-        checked == true ? <CircleCheckIcon /> : <Circle />
+        checked == true ? <CircleCheckIcon color='green' size='12px'/>  : <Circle size={'12px'} color='red' />
       }
     </div>
 

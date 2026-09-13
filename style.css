@@ -13,28 +13,37 @@ body {
 
 
 .innerQuestionCOntainer {
-    border: 1px solid #000;
     border-radius: 8px;
+    background-color: #00800042;
+
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 8px;
+    gap: 5px;
     width: 90%;
     height: 50px;
     display: flex;
 }
 
+.upperIcon:hover{
+    background-color: goldenrod;
+}
 
+.innerQuestionCOntainer:hover{
+     transform: translateY(-2px);
+ background: rgba(37, 100, 235, 0.568);
+}
 .questionInfoHeader {
     display: flex;
     box-sizing: border-box;
     padding: 10px;
-    box-shadow: 1px, 1px, 0px black;
     border-radius: 10px;
     align-items: center;
     overflow-y: auto;
     width: 100%;
-    max-width: 200px;
+    backdrop-filter: blur(10px);
+background-color: rgb(255, 255, 255, 0.7);  
+ max-width: 170px;
     gap: 10px;
     height: 100%;
     flex-direction: column;
@@ -44,21 +53,29 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 10px;
     width: 90%;
 }
 
-.quizType {
-    width: 85px;
-    height: 25px;
-    border-radius: 30px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    background: #00b6ff3d;
+.questionPageAndAnswerHeader h4 {
+    text-align: left;
+    margin: 15px;
 }
 
+.quizType {
+    background: #00b6ff3d;
+    border-radius: 30px;
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 21px;
+    display: flex;
+}
+
+
 .footer {
-        flex-direction: column;
+    flex-direction: column;
     gap: 10px;
     font-size: 10px;
     overflow-y: auto;
@@ -68,11 +85,22 @@ body {
     display: flex;
 }
 
-.upperIcon {
-    gap: 2px;
-    display: flex;
+.upperIcon  {
+    justify-content: center;
     align-items: center;
-    font-size: 15px;
+    height: 30px;
+    border-radius: 100%;
+    width: 30px;
+    display: flex;
+    font-size: 12px;
+    display: flex;
+}
+
+.bookmark {
+    display: flex;
+    font-size: 12px;
+
+    align-items: center;
     justify-content: center;
 }
 
@@ -101,13 +129,17 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    border: 1px solid black;
+   backdrop-filter: blur(10px);
+    background-color: rgb(255, 255, 255, 0.7);
     border-radius: 10px;
 }
 
 .mainQuestionsOption {
     width: 90%;
+    height: 100%;
     gap: 10px;
+    padding-top: 20px;
+
     overflow-y: auto;
     align-items: center;
     justify-content: center;
@@ -117,24 +149,48 @@ body {
 }
 
 .footerBtn {
-   justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     width: 90%;
+
     flex-wrap: wrap;
     padding: 10px;
     display: flex;
 }
 
-.footerBtn button{
+.footerBtn button {
+    width: 80px;
+    height: 32px;
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    flex-direction: column;
+
+    cursor: pointer;
 }
+
+.footerBtn button {
+    transition: 0.2s ease;
+
+}
+
+.footerBtn button:hover {
+    transform: translateY(-2px);
+ background: rgba(37, 99, 235, 1);
+}
+
 .innerTimerContainer {
-    border: 1px solid #000;
-    border-radius: 10px;
+   backdrop-filter: blur(10px);
+background-color: rgb(255, 255, 255, 0.7);    border-radius: 10px;
     justify-content: center;
     width: 100px;
     height: 72px;
@@ -148,8 +204,8 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    border: 1px solid #000;
-    border-radius: 10px;
+    backdrop-filter: blur(10px);
+background-color: rgb(255, 255, 255, 0.7);    border-radius: 10px;
     padding: 10px;
     padding-inline: 15px;
 
@@ -223,17 +279,28 @@ body {
 .headerQuiz {
     width: 100%;
 }
-
 .mainpageinner {
     width: 80%;
     height: 90svh;
-    background-color: rgb(255, 255, 255);
+
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.10),
+        rgba(255,255,255,0.20) 45%,
+        rgba(255,255,255,0.30)
+    );
+
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.15),
+        inset 0 0.1px 0 rgba(255,255,255,0.9);
+
     display: flex;
     padding: 10px;
-    border: 1px solid black;
     flex-direction: column;
     align-items: center;
-    border-radius:10px ;
     justify-content: center;
 }
 
