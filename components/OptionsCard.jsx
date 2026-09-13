@@ -1,14 +1,13 @@
-import { Circle } from 'lucide-react'
-import React from 'react'
+import { Circle } from "lucide-react";
+import React from "react";
 
-function OptionsCard({question,optionName }) {
+function OptionsCard({ question }) {
   return (
     <div className="singleOptionCard">
-        <span><Circle/></span>
-        <span>{optionName}</span>
-        <span>{question}</span>
+      <span>{question.key}</span>
+      <span>{question.text}</span>
     </div>
-  )
+  );
 }
 
-export default OptionsCard
+export default OptionsCard;

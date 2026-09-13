@@ -1,305 +1,354 @@
-import React from 'react'
-import SettingCard from '../components/SettingCard'
+import React, { useState } from "react";
+import SettingCard from "../components/SettingCard";
 
 import {
-    CircleDot,
-    SquareText,
-    RectangleEllipsis,
-    Blender,
-    Gauge,
-    ListOrdered,
-    Clock3,
-    Lightbulb,
-    Brain,
-    Settings2,
-    Target,
-    MinusCircle,
-    SlidersHorizontal,
-    Trophy,
-    Shuffle,
-    List,
-    Eye,
-    EyeOff,
-    Lock
-} from 'lucide-react'
+  CircleDot,
+  Type,
+  FormInput,
+  Blend,
+  Sprout,
+  Gauge,
+  Flame,
+  ListOrdered,
+  Clock3,
+  Lightbulb,
+  Brain,
+  Target,
+  SlidersHorizontal,
+  Trophy,
+  MinusCircle,
+  List,
+  Shuffle,
+  Eye,
+  EyeOff,
+  Lock,
+} from "lucide-react";
 
-function Settings() {
-    return (
-        <div className="loaderOuterContainer">
-
-            <div className="innerSettingsContainer">
-
-                {/* Quiz Type */}
-                <SettingCard
-                    classForCard={'cardsInfo'}
-                    header={'Quiz Type.'}
-                    para={'choose appropriate type'}
-                    options={[
-                        {
-                            icon: <CircleDot />,
-                            text: 'MCQ'
-                        },
-                        {
-                            icon: <SquareText />,
-                            text: 'Text'
-                        },
-                        {
-                            icon: <RectangleEllipsis />,
-                            text: 'Fill'
-                        },
-                        {
-                            icon: <Blender />,
-                            text: 'Mixed'
-                        }
-                    ]}
-                />
+function Settings({ quizSettings, setQuizSettings, prompt, setCurrentPhase, fetchData}) {
 
 
-                {/* Difficulty */}
-                <SettingCard
-                    classForCard={'cardsInfo'}
-
-                    header={'Difficulty.'}
-                    para={'how challenging should it be'}
-                    options={[
-                        {
-                            icon: <Gauge />,
-                            text: 'Easy'
-                        },
-                        {
-                            icon: <Gauge />,
-                            text: 'Medium'
-                        },
-                        {
-                            icon: <Gauge />,
-                            text: 'Hard'
-                        },
-                        {
-                            icon: <Settings2 />,
-                            text: 'Mixed'
-                        }
-                    ]}
-                />
 
 
-                {/* Number of Questions */}
-                <SettingCard
-                    classForCard={'cardsInfo'}
+  const iconMap = {
+    quizType: {
+      MCQ: <CircleDot />,
+      Text: <Type />,
+      Fill: <FormInput />,
+      Mixed: <Blend />,
+    },
 
-                    header={'Number of Questions.'}
-                    para={'how many questions?'}
-                    options={[
-                        {
-                            icon: <ListOrdered />,
-                            text: '5'
-                        },
-                        {
-                            icon: <ListOrdered />,
-                            text: '10'
-                        },
-                        {
-                            icon: <ListOrdered />,
-                            text: '20'
-                        },
-                        {
-                            icon: <ListOrdered />,
-                            text: '30'
-                        }
-                    ]}
-                />
-                <SettingCard
-                    classForCard={'cardsInfo'}
+    difficulty: {
+      Easy: <Sprout />,
+      Medium: <Gauge />,
+      Hard: <Flame />,
+      Mixed: <Blend />,
+    },
 
-                    header={'Number of Questions.'}
-                    para={'how many questions?'}
-                    options={[
-                        {
-                            icon: <ListOrdered />,
-                            text: '5'
-                        },
-                        {
-                            icon: <ListOrdered />,
-                            text: '10'
-                        },
-                        {
-                            icon: <ListOrdered />,
-                            text: '20'
-                        },
-                        {
-                            icon: <ListOrdered />,
-                            text: '30'
-                        }
-                    ]}
-                />
+    numberOfQuestions: <ListOrdered />,
 
-                {/* Time Limit */}
-                <SettingCard
-                    classForCard={'cardsInfo'}
+    timeLimit: <Clock3 />,
 
-                    header={'Time Limit.'}
-                    para={'set a time limit'}
-                    options={[
-                        {
-                            icon: <Clock3 />,
-                            text: 'None'
-                        },
-                        {
-                            icon: <Clock3 />,
-                            text: '10 min'
-                        },
-                        {
-                            icon: <Clock3 />,
-                            text: '20 min'
-                        },
-                        {
-                            icon: <Clock3 />,
-                            text: '30 min'
-                        }
-                    ]}
-                />
+    questionStyle: {
+      Recall: <Lightbulb />,
+      Conceptual: <Brain />,
+      Application: <Target />,
+      Mixed: <Blend />,
+    },
+
+    scoring: {
+      Standard: <Trophy />,
+      Negative: <MinusCircle />,
+      Custom: <SlidersHorizontal />,
+      Mixed: <Blend />,
+    },
+
+    questionOrder: {
+      Sequential: <List />,
+      Shuffle: <Shuffle />,
+    },
+
+    answerReveal: {
+      Immediately: <Eye />,
+      After: <EyeOff />,
+      Never: <Lock />,
+    },
+  };
 
 
-                {/* Question Style */}
-                <SettingCard
-                    classForCard={'cardsInfo'}
 
-                    header={'Question Style.'}
-                    para={'how should questions test you?'}
-                    options={[
-                        {
-                            icon: <Lightbulb />,
-                            text: 'Recall'
-                        },
-                        {
-                            icon: <Brain />,
-                            text: 'Conceptual'
-                        },
-                        {
-                            icon: <Target />,
-                            text: 'Application'
-                        },
-                        {
-                            icon: <Blender />,
-                            text: 'Mixed'
-                        }
-                    ]}
-                />
+  return (
+    <div className="loaderOuterContainer">
+      <div className="innerSettingsContainer">
 
+        {/* Quiz Type */}
+        <SettingCard
+          classForCard="cardsInfo"
+          header="Quiz Type."
+          para="choose appropriate type"
+          settingName="quizType"
+          value={quizSettings.quizType}
+          setQuizSettings={setQuizSettings}
+          options={[
+            {
+              icon: iconMap.quizType.MCQ,
+              text: "MCQ",
+            },
+            {
+              icon: iconMap.quizType.Text,
+              text: "Text",
+            },
+            {
+              icon: iconMap.quizType.Fill,
+              text: "Fill",
+            },
+            {
+              icon: iconMap.quizType.Mixed,
+              text: "Mixed",
+            },
+          ]}
+        />
 
-                {/* Scoring */}
-                <SettingCard
-                    classForCard={'cardsInfo'}
+        {/* Difficulty */}
+        <SettingCard
+          classForCard="cardsInfo"
+          header="Difficulty."
+          para="how challenging should it be"
+          settingName="difficulty"
+          value={quizSettings.difficulty}
+          setQuizSettings={setQuizSettings}
+          options={[
+            {
+              icon: iconMap.difficulty.Easy,
+              text: "Easy",
+            },
+            {
+              icon: iconMap.difficulty.Medium,
+              text: "Medium",
+            },
+            {
+              icon: iconMap.difficulty.Hard,
+              text: "Hard",
+            },
+            {
+              icon: iconMap.difficulty.Mixed,
+              text: "Mixed",
+            },
+          ]}
+        />
 
-                    header={'Scoring.'}
-                    para={'how should answers be scored?'}
-                    options={[
-                        {
-                            icon: <Trophy />,
-                            text: 'Standard'
-                        },
-                        {
-                            icon: <MinusCircle />,
-                            text: 'Negative'
-                        },
-                        {
-                            icon: <SlidersHorizontal />,
-                            text: 'Custom'
-                        },
-                        {
-                            icon: <Blender />,
-                            text: 'Mixed'
-                        }
-                    ]}
-                />
+        {/* Number of Questions */}
+        <SettingCard
+          classForCard="cardsInfo"
+          header="Number of Questions."
+          para="how many questions?"
+          settingName="numberOfQuestions"
+          value={quizSettings.numberOfQuestions}
+          setQuizSettings={setQuizSettings}
+          options={[
+            {
+              icon: iconMap.numberOfQuestions,
+              text: 5,
+            },
+            {
+              icon: iconMap.numberOfQuestions,
+              text: 10,
+            },
+            {
+              icon: iconMap.numberOfQuestions,
+              text: 20,
+            },
+            {
+              icon: iconMap.numberOfQuestions,
+              text: 30,
+            },
+          ]}
+        />
 
+        {/* Time Limit */}
+        <SettingCard
+          classForCard="cardsInfo"
+          header="Time Limit."
+          para="set a time limit"
+          settingName="timeLimit"
+          value={quizSettings.timeLimit}
+          setQuizSettings={setQuizSettings}
+          options={[
+            {
+              icon: iconMap.timeLimit,
+              text: "None",
+            },
+            {
+              icon: iconMap.timeLimit,
+              text: "10 min",
+            },
+            {
+              icon: iconMap.timeLimit,
+              text: "20 min",
+            },
+            {
+              icon: iconMap.timeLimit,
+              text: "30 min",
+            },
+          ]}
+        />
 
-                {/* Question Order */}
-                <SettingCard
-                    classForCard={'cardsInfo orderQuestion'}
+        {/* Question Style */}
+        <SettingCard
+          classForCard="cardsInfo"
+          header="Question Style."
+          para="how should questions test you?"
+          settingName="questionStyle"
+          value={quizSettings.questionStyle}
+          setQuizSettings={setQuizSettings}
+          options={[
+            {
+              icon: iconMap.questionStyle.Recall,
+              text: "Recall",
+            },
+            {
+              icon: iconMap.questionStyle.Conceptual,
+              text: "Conceptual",
+            },
+            {
+              icon: iconMap.questionStyle.Application,
+              text: "Application",
+            },
+            {
+              icon: iconMap.questionStyle.Mixed,
+              text: "Mixed",
+            },
+          ]}
+        />
 
-                    header={'Question Order.'}
-                    para={'choose question arrangement'}
-                    options={[
-                        {
-                            icon: <List />,
-                            text: 'Sequential'
-                        },
-                        {
-                            icon: <Shuffle />,
-                            text: 'Shuffle'
-                        }
-                    ]}
-                />
+        {/* Scoring */}
+        <SettingCard
+          classForCard="cardsInfo"
+          header="Scoring."
+          para="how should answers be scored?"
+          settingName="scoring"
+          value={quizSettings.scoring}
+          setQuizSettings={setQuizSettings}
+          options={[
+            {
+              icon: iconMap.scoring.Standard,
+              text: "Standard",
+            },
+            {
+              icon: iconMap.scoring.Negative,
+              text: "Negative",
+            },
+            {
+              icon: iconMap.scoring.Custom,
+              text: "Custom",
+            },
+            {
+              icon: iconMap.scoring.Mixed,
+              text: "Mixed",
+            },
+          ]}
+        />
 
+        {/* Question Order */}
+        <SettingCard
+          classForCard="cardsInfo orderQuestion"
+          header="Question Order."
+          para="choose question arrangement"
+          settingName="questionOrder"
+          value={quizSettings.questionOrder}
+          setQuizSettings={setQuizSettings}
+          options={[
+            {
+              icon: iconMap.questionOrder.Sequential,
+              text: "Sequential",
+            },
+            {
+              icon: iconMap.questionOrder.Shuffle,
+              text: "Shuffle",
+            },
+          ]}
+        />
 
-                {/* Answer Reveal */}
-                <SettingCard
-                    classForCard={'cardsInfo'}
+        {/* Answer Reveal */}
+        <SettingCard
+          classForCard="cardsInfo"
+          header="Answer Reveal."
+          para="when should answers be shown?"
+          settingName="answerReveal"
+          value={quizSettings.answerReveal}
+          setQuizSettings={setQuizSettings}
+          options={[
+            {
+              icon: iconMap.answerReveal.Immediately,
+              text: "Immediately",
+            },
+            {
+              icon: iconMap.answerReveal.After,
+              text: "After",
+            },
+            {
+              icon: iconMap.answerReveal.Never,
+              text: "Never",
+            },
+          ]}
+        />
 
-                    header={'Answer Reveal.'}
-                    para={'when should answers be shown?'}
-                    options={[
-                        {
-                            icon: <Eye />,
-                            text: 'Immediately'
-                        },
-                        {
-                            icon: <EyeOff />,
-                            text: 'After'
-                        },
-                        {
-                            icon: <Lock />,
-                            text: 'Never'
-                        }
-                    ]}
-                />
+        {/* Quiz Summary */}
+        <SettingCard
+          classForCard="cardsInfo"
+          header="Quiz Summary."
+          readOnly={true}
+          para="review your settings before generating"
+          options={[
+            {
+              icon: iconMap.numberOfQuestions,
+              text: `${quizSettings.numberOfQuestions} Questions`,
+            },
+            {
+              icon: iconMap.difficulty[quizSettings.difficulty],
+              text: quizSettings.difficulty,
+            },
+            {
+              icon: iconMap.quizType[quizSettings.quizType],
+              text: quizSettings.quizType,
+            },
+            {
+              icon: iconMap.timeLimit,
+              text: quizSettings.timeLimit,
+            },
+            {
+              icon: iconMap.questionStyle[quizSettings.questionStyle],
+              text: quizSettings.questionStyle,
+            },
+            {
+              icon: iconMap.scoring[quizSettings.scoring],
+              text: quizSettings.scoring,
+            },
+            {
+              icon: iconMap.questionOrder[quizSettings.questionOrder],
+              text: quizSettings.questionOrder,
+            },
+            {
+              icon: iconMap.answerReveal[quizSettings.answerReveal],
+              text: quizSettings.answerReveal,
+            },
+          ]}
+        />
 
-                <SettingCard
-                    classForCard={'cardsInfo'}
-
-                    header={'Quiz Summary.'}
-                    para={'review your settings before generating'}
-
-                    options={[
-                        {
-                            icon: <ListOrdered />,
-                            text: '10 Questions'
-                        },
-                        {
-                            icon: <Gauge />,
-                            text: 'Medium'
-                        },
-                        {
-                            icon: <CircleDot />,
-                            text: 'MCQ'
-                        },
-                        {
-                            icon: <Clock3 />,
-                            text: '20 min'
-                        },
-                        {
-                            icon: <Brain />,
-                            text: 'Conceptual'
-                        },
-                        {
-                            icon: <Shuffle />,
-                            text: 'Shuffle'
-                        },
-                        {
-                            icon: <EyeOff />,
-                            text: 'After'
-                        }
-                    ]}
-                />
-             <div className="btnGen">
-                   <button >Generate Quiz</button>
-             </div>
-
-
-            </div>
-
+        {/* Generate Button */}
+        <div className="btnGen">
+          <button onClick={()=>{
+            fetchData(prompt, quizSettings);
+            console.log('prompt from setting', prompt)
+            console.log('first', quizSettings);
+           return setCurrentPhase('generation')
+          }}>
+            Generate Quiz
+          </button>
         </div>
-    )
+
+      </div>
+    </div>
+  );
 }
 
-export default Settings
+export default Settings;

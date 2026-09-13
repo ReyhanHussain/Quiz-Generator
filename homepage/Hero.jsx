@@ -1,7 +1,8 @@
 import { FileText, Link, CloudUpload, Sparkles, TextInitial } from "lucide-react";
 import Navbar from "../components/Navbar";
 
-function Hero() {
+function Hero({ setPrompt, setCurrentPhase }) {
+
     return (
         <>
             <Navbar />
@@ -17,6 +18,11 @@ function Hero() {
                     <div className="innerBox">
                         <textarea
                             placeholder="What do you want to study..."
+                            onChange={(e) => setPrompt(
+                                {
+                                    userPrompt: e.target.value
+                                }
+                            )}
                         />
 
                         <div className="optionsForPromptBox">
@@ -37,7 +43,7 @@ function Hero() {
 
                             </div>
 
-                            <button className="searchNow">
+                            <button className="searchNow" onClick={()=>setCurrentPhase('settings')}>
                                 <Sparkles size={15} color="blue" />
                             </button>
 
@@ -46,7 +52,7 @@ function Hero() {
                 </div>
 
             </div>
-          
+
         </>
 
     );

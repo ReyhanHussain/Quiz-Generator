@@ -1,11 +1,11 @@
 import React from 'react'
 import QuestionInfoCard from './QuestionInfoCard'
-function QuestionInfoHeader({ questionObj }) {
-  console.log(questionObj)
+function QuestionInfoHeader({ questionsArray }) {
+  console.log(questionsArray)
   return (
     <div className='questionInfoHeader'>
       {//questionNo, checked
-        questionObj.map((singleCard, i) => {
+        questionsArray?.map((singleCard, i) => {
           return <QuestionInfoCard key={i} questionNo={singleCard.id} checked={singleCard.checked} />
         })
 

@@ -1,28 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import QuizHeader from '../components/QuizHeader'
 import QuestionInfoHeader from '../components/QuestionInfoHeader'
 import QuestionPageAndAnswer from '../components/QuestionPageAndAnswer'
-import {data} from '../data/'
 
-function MainPage() {
+function MainPage({currentQuestion, SetCurrentQuestion, data, quizSettings}) {
+function percentageHandler(){
+return '5'
+}
   return (
+
     <div className='mainPageOuterContainer'>
       <div className="mainpageinner">
         <div className="headerQuiz">
+
           <QuizHeader
+
             topicName={data.topicName}
-            diffcultyLevel={data.diffcultyLevel}
-            time={data.time}
-            questionNoNow={data.questionNoNow}
-            totalQuestions={data.totalQuestions}
-            questionPersentage={data.questionPersentage}
-            timeRemaing={data.timeRemaing}
+            diffcultyLevel={quizSettings.difficulty}
+            time={quizSettings.timeLimit}
+            currentQuestion={currentQuestion}
+            totalQuestions={quizSettings.numberOfQuestions}
+            questionPersentage={percentageHandler}
+            timeRemaing={'5:00'}
           />
 
         </div>
         <div className="questionTrackAndQuizMainPage">
-          <QuestionInfoHeader questionObj = {data.questions}/>
-          <QuestionPageAndAnswer quizType = {data.quizType} questionTitle={data.questions[0].questionTitle} options={data.questions[0].options}/>
+          <QuestionInfoHeader questionsArray = {data.questions}/>
+          <QuestionPageAndAnswer SetCurrentQuestion = {SetCurrentQuestion} currentQuestion = {currentQuestion} data = {data.questions} quizSettings = {quizSettings}/>
         </div>
       </div>
     </div>

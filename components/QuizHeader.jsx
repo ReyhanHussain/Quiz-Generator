@@ -1,7 +1,7 @@
 import { Clock } from 'lucide-react'
 import React from 'react'
 
-function QuizHeader({topicName,diffcultyLevel , time,questionNoNow, totalQuestions, questionPersentage, timeRemaing  }) {
+function QuizHeader({currentQuestion, topicName,diffcultyLevel , time,questionNoNow, totalQuestions, questionPersentage, timeRemaing  }) {
   return (
     <div className="outerHeader">
         <div className="headingandloader">
@@ -15,13 +15,13 @@ function QuizHeader({topicName,diffcultyLevel , time,questionNoNow, totalQuestio
         </div>
         <div className="questionsDisplayContainer">
             <div className="questions">
-                <p>Question {questionNoNow} of {totalQuestions}</p>
+                <p>Question {currentQuestion} of {totalQuestions}</p>
             </div>
            <div className='outerLoaderBoxOfQuestion'>
              <div className="loaderOfQuestionContainer">
                 <div></div>
             </div>
-            {questionPersentage}%
+            {questionPersentage()}%
            </div>
         </div>
 

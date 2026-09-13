@@ -25,14 +25,15 @@ body {
     display: flex;
 }
 
-.upperIcon:hover{
+.upperIcon:hover {
     background-color: goldenrod;
 }
 
-.innerQuestionCOntainer:hover{
-     transform: translateY(-2px);
- background: rgba(37, 100, 235, 0.568);
+.innerQuestionCOntainer:hover {
+    transform: translateY(-2px);
+    background: rgba(37, 100, 235, 0.568);
 }
+
 .questionInfoHeader {
     display: flex;
     box-sizing: border-box;
@@ -42,8 +43,8 @@ body {
     overflow-y: auto;
     width: 100%;
     backdrop-filter: blur(10px);
-background-color: rgb(255, 255, 255, 0.7);  
- max-width: 170px;
+    background-color: rgb(255, 255, 255, 0.7);
+    max-width: 170px;
     gap: 10px;
     height: 100%;
     flex-direction: column;
@@ -85,7 +86,7 @@ background-color: rgb(255, 255, 255, 0.7);
     display: flex;
 }
 
-.upperIcon  {
+.upperIcon {
     justify-content: center;
     align-items: center;
     height: 30px;
@@ -129,7 +130,7 @@ background-color: rgb(255, 255, 255, 0.7);
     justify-content: center;
     align-items: center;
     width: 100%;
-   backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     background-color: rgb(255, 255, 255, 0.7);
     border-radius: 10px;
 }
@@ -185,12 +186,13 @@ background-color: rgb(255, 255, 255, 0.7);
 
 .footerBtn button:hover {
     transform: translateY(-2px);
- background: rgba(37, 99, 235, 1);
+    background: rgba(37, 99, 235, 1);
 }
 
 .innerTimerContainer {
-   backdrop-filter: blur(10px);
-background-color: rgb(255, 255, 255, 0.7);    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    background-color: rgb(255, 255, 255, 0.7);
+    border-radius: 10px;
     justify-content: center;
     width: 100px;
     height: 72px;
@@ -205,7 +207,8 @@ background-color: rgb(255, 255, 255, 0.7);    border-radius: 10px;
     justify-content: space-between;
     width: 100%;
     backdrop-filter: blur(10px);
-background-color: rgb(255, 255, 255, 0.7);    border-radius: 10px;
+    background-color: rgb(255, 255, 255, 0.7);
+    border-radius: 10px;
     padding: 10px;
     padding-inline: 15px;
 
@@ -279,23 +282,22 @@ background-color: rgb(255, 255, 255, 0.7);    border-radius: 10px;
 .headerQuiz {
     width: 100%;
 }
+
 .mainpageinner {
     width: 80%;
     height: 90svh;
 
-    background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.10),
-        rgba(255,255,255,0.20) 45%,
-        rgba(255,255,255,0.30)
-    );
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 255, 255, 0.20) 45%,
+            rgba(255, 255, 255, 0.30));
 
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
 
     box-shadow:
-        0 8px 25px rgba(0,0,0,0.15),
-        inset 0 0.1px 0 rgba(255,255,255,0.9);
+        0 8px 25px rgba(0, 0, 0, 0.15),
+        inset 0 0.1px 0 rgba(255, 255, 255, 0.9);
 
     display: flex;
     padding: 10px;
@@ -396,7 +398,7 @@ background-color: rgb(255, 255, 255, 0.7);    border-radius: 10px;
 
 
 .loaderCard {
-       background: linear-gradient(135deg, #ffffffc4, #fff3 45%, #ffffff4d);
+    background: linear-gradient(135deg, #ffffffc4, #fff3 45%, #ffffff4d);
     border-radius: 20px;
     flex-direction: column;
     border: 2px solid rgb(255, 255, 255, 0.3);
@@ -497,25 +499,34 @@ background-color: rgb(255, 255, 255, 0.7);    border-radius: 10px;
     font-size: 9px;
     font-weight: 600;
     margin-top: 5px;
-    border-radius: 8px ;
+    border-radius: 8px;
     flex-direction: column;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.447);
     justify-content: center;
     align-items: center;
-    height: 30px;
+    height: 54px;
     text-align: center;
-    width: 45px;
+    width: 65px;
     background-color: rgb(255, 255, 255, 0.7);
     padding: 8px;
 }
 
 .cardsInfo:hover {
-   transform: translateY(-2px);
- background: rgba(37, 100, 235, 0.772);
+    transform: translateY(-2px);
+    background: rgba(37, 100, 235, 0.772);
     transition: all ease 0.03;
-
 }
 
+.selected {
+    background: rgba(255, 0, 0, 0.521);
+}
+
+.selected:hover {
+    transform: none;
+    
+    background: rgba(255, 0, 0, 0.521);
+    transition: none;
+}
 
 .settingPage {
     width: 100%;
@@ -642,7 +653,7 @@ background-color: rgb(255, 255, 255, 0.7);    border-radius: 10px;
     box-sizing: border-box;
     background: linear-gradient(135deg, #ffffff49, #fff3 45%, #ffffff4d);
     border-radius: 20px;
-        
+
     border: 2px solid rgba(255, 255, 255, 0.393);
     justify-content: center;
     align-items: center;
