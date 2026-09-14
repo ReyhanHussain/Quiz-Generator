@@ -4,8 +4,10 @@ import QuestionInfoHeader from '../components/QuestionInfoHeader'
 import QuestionPageAndAnswer from '../components/QuestionPageAndAnswer'
 
 function MainPage({currentQuestion, SetCurrentQuestion, data, quizSettings}) {
-function percentageHandler(){
-return '5'
+function percentageHandler(currQuestion){
+  console.log('currQuestion', currQuestion)
+  console.log('numberOfQuestions', quizSettings.numberOfQuestions)
+return Number( Math.round(( Number(currQuestion) / Number( quizSettings.numberOfQuestions)) * 100));
 }
   return (
 
@@ -18,10 +20,9 @@ return '5'
             topicName={data.topicName}
             diffcultyLevel={quizSettings.difficulty}
             time={quizSettings.timeLimit}
-            currentQuestion={currentQuestion}
+            currentQuestion={currentQuestion+1}
             totalQuestions={quizSettings.numberOfQuestions}
             questionPersentage={percentageHandler}
-            timeRemaing={'5:00'}
           />
 
         </div>

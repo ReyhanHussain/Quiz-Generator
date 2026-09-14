@@ -1,25 +1,37 @@
-import { ArrowLeft, ArrowRight, Bookmark, Lightbulb } from 'lucide-react'
-import React, { useState } from 'react'
+import { ArrowLeft, ArrowRight, Bookmark, BookOpenCheck, Check, Lightbulb, X } from 'lucide-react'
+import { useState } from 'react'
 import OptionsCard from './OptionsCard'
 
-function QuestionPageAndAnswer({ SetCurrentQuestion, currentQuestion, data, quizSettings }) {
 
-    function previousPageHandler(){
-        if(currentQuestion <= 0){
+function QuestionPageAndAnswer({ SetCurrentQuestion, currentQuestion, data, quizSettings }) {
+    const [submitted, setSubmitted] = useState(false);
+
+    function previousPageHandler() {
+        if (currentQuestion <= 0) {
             return
         }
         SetCurrentQuestion(
-            (prev)=> prev - 1
+            (prev) => prev - 1
         )
     }
 
-    function rightPageHandler(){
-        if(currentQuestion >= quizSettings.numberOfQuestions -1){
+    function rightPageHandler() {
+        if (currentQuestion >= quizSettings.numberOfQuestions - 1) {
             return
         }
         SetCurrentQuestion(
-            (prev)=>prev + 1
+            (prev) => prev + 1
         )
+    }
+    function submitAnwsers() {
+
+
+
+
+        console.log('submitted');
+        setSubmitted(true);
+
+
     }
 
     return (
@@ -35,7 +47,9 @@ function QuestionPageAndAnswer({ SetCurrentQuestion, currentQuestion, data, quiz
                     <Lightbulb size='16px' /> <span></span>
                 </div>
             </div>
-            <h4>{data[currentQuestion].question}</h4>
+            <div className="questionContainer">
+                <h4>{data[currentQuestion].question}</h4>
+            </div>
 
             <div className="mainQuestionsOption">
                 {
@@ -50,14 +64,30 @@ function QuestionPageAndAnswer({ SetCurrentQuestion, currentQuestion, data, quiz
                 }
             </div>
 
+
             <div className="footerBtn">
-                <button onClick={previousPageHandler}><ArrowLeft /></button>
-                <span>{currentQuestion} of {quizSettings.numberOfQuestions}</span>
-                <button onClick={rightPageHandler}><ArrowRight /></button>
+                {
+                    submitted ? (
+                        <div className='submitCrossCheckContainer'>
+                            <button onClick={()=>setSubmitted(false)}><X /></button>
+                            <button><Check /></button>
+                        </div>
+                    ) :
+                        <>
+                            <button onClick={previousPageHandler}><ArrowLeft /></button>
+                            <span>{currentQuestion + 1} of {quizSettings.numberOfQuestions}</span>
 
+                            {
+                                currentQuestion == quizSettings.numberOfQuestions - 1 ?
+                                    <button onClick={submitAnwsers}><BookOpenCheck /></button> :
+                                    <button onClick={rightPageHandler}><ArrowRight /></button>
+                            }
+                        </>
+
+                }
             </div>
-
         </div>
+
     )
 }
 

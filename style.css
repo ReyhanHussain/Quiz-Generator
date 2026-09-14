@@ -106,21 +106,37 @@ body {
 }
 
 .singleOptionCard {
-    border: 1px solid #000;
+      border: 1px solid #000;
     border-radius: 10px;
     justify-content: flex-start;
     align-items: center;
     gap: 3px;
-    padding-inline: 10px;
     width: 90%;
-    min-height: 50px;
+    cursor: pointer;
+    max-width: stretch;
+    min-height: 43px;
+    padding-inline: 10px;
     display: flex;
 }
 
 .loaderOfQuestionContainer {
-    width: 200px;
+   width: 200px;
+    border: 1px solid #0000005e;
+    border-radius: 70px;
     height: 10px;
-    background-color: pink;
+}
+.loaderOfQuestionContainer div{
+        background-color: #2077d9;
+    border-radius: 70px;
+    height: 100%;
+    content: " ";
+}
+.submitCrossCheckContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .questionPageAndAnswerOuterCOnt {
@@ -136,16 +152,16 @@ body {
 }
 
 .mainQuestionsOption {
-    width: 90%;
-    height: 100%;
-    gap: 10px;
-    padding-top: 20px;
-
-    overflow-y: auto;
+       flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
-    DISPLAY: flex;
-    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    padding-top: 20px;
+    display: flex;
+    overflow-y: auto;
 
 }
 
@@ -203,21 +219,22 @@ body {
 }
 
 .headingandloader {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    backdrop-filter: blur(10px);
-    background-color: rgb(255, 255, 255, 0.7);
-    border-radius: 10px;
+   backdrop-filter: blur(10px);
     padding: 10px;
+    background-color: #ffffffb3;
+    border-radius: 10px;
+    justify-content: space-between;
+    flex: 1;
+    flex-wrap: wrap;
     padding-inline: 15px;
-
+    display: flex;
 }
 
 
 
 .outerHeader {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
@@ -510,7 +527,23 @@ body {
     background-color: rgb(255, 255, 255, 0.7);
     padding: 8px;
 }
+.questionContainer{
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 50px;
+    padding-inline: 10px;
+    padding-top: 10px;
+    font-size: 1em;
+    display: flex;
+    overflow-y: auto;
+    
+}
+.questionContainer h4{
+     overflow-wrap:break-word;
+     margin: 0;
+}
 
+ 
 .cardsInfo:hover {
     transform: translateY(-2px);
     background: rgba(37, 100, 235, 0.772);

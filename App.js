@@ -6,6 +6,7 @@ import QuizHeader from "./components/QuizHeader";
 import MainPage from "./quizpage/MainPage";
 import { BusFront } from "lucide-react";
 import { key } from "./key";
+import { data as data1 } from "./data";
 
 const SYSTEM_PROMPT = `
 You generate quiz data for a React application.
@@ -383,11 +384,11 @@ function App() {
     questionOrder: "Sequential",
     answerReveal: "After",
   });
-  const [currentPhase, setCurrentPhase] = useState("prompting");
+  const [currentPhase, setCurrentPhase] = useState(" ");
   const [prompt, setPrompt] = useState({
     userPrompt: "",
   });
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(data1);
 
   console.log(prompt);
   console.log(currentPhase);
